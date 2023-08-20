@@ -15,5 +15,28 @@ document.addEventListener('DOMContentLoaded', function() {
     e.target.classList.add('dis-none')
   })
 
+
   
-}); 
+//   setTimeout(function(){
+//     console.log("start...");
+//   fetch('https://jsonplaceholder.typicode.com/users')
+//   .then((response) => response.json())
+//   .then((json) => {
+//     console.log("end...");
+//     console.log(json);
+//     let html=""
+//     for (const user of json){
+//       html=html+ `<tr>
+   
+//           <td>${user.id}</td>
+//           <td>${user.name}</td>
+//           <td>${user.email}</td>
+//           <td>${user.address.city}</td>
+//           <td> <i class="material-icons red-text m-l-2 m-r-2">delete</i>
+//             <i class="material-icons orange-text m-l-2 m-r-2">edit</i></td>
+//         </tr>`}
+//         document.querySelector('.desktop-user').innerHTML=html
+//   });
+//   },5000)
+ }); 
+

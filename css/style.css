@@ -26,6 +26,9 @@ table.highlight > tbody > tr:hover {
   .container{
     width: 100%;
   }
+  /* *{
+    direction:rtl;
+  } */
   .add-user-modal-block {
     position: fixed;
     width: 100%;

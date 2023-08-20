@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/materialize/css/materialize-rtl.css">
     <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="icon" type="image/ x-icon" href="/pic/favicon.ico">
+
     <link rel="stylesheet" href="/css/util.css">
   
     
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body x-data="usersData" >
 <!-- navbar start--------------------------------------------------------------------------- -->
   <nav class=" top-navbar white z-depth-3" >
     <div class="nav-wrapper ">
       <a href="#!" class="class=brand-logo light-blue-text accent-3   hide-on-med-and-up">user management</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger light-blue-text "><i class="material-icons">menu</i></a>
       <li><div class="divider z-depth-1 grey "></div></li>
-      <ul class="left hide-on-med-and-down brown-text ">
+      <ul class=" hide-on-med-and-down brown-text ">
         <li><a class="brown-text" href="tuturial.html">my activity</a></li>
         <li><a class="brown-text" href="tuturial.html">about me</a></li>
         <li><a class="brown-text" href="tuturial.html">my tuturial</a></li>
@@ -66,7 +68,7 @@
   </div>
   <div class="col l2 hide-on-med-and-down  "></div>
 </section>
-<section class="user-list-section">
+<section class="user-list-section "x-init="getUsers()">
   <ul class="collapsible hide-on-med-and-up">
     <li class="user-list-item">
       <div class="collapsible-header  "><i class="material-icons trans-0-2 user-list-arrow-icon  blue-text darken-2">arrow_drop_down</i>hajar nikkhah</div>
@@ -106,7 +108,7 @@
     <table class="striped centered highlight container">
       <thead>
         <tr>
-            <th>Name</th>
+            <th>id</th>
             <th>User name</th>
             <th>Email</th>
             <th>Address</th>
@@ -114,31 +116,20 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody class="desktop-users">
+        <template x-for="user in users">
+
+        
         <tr>
-          <td>hajar nikkhah</td>
-          <td>hnikkhah</td>
-          <td>hnikkhah.81@gmail.com</td>
-          <td>imam strret</td>
+          <td x-text="user.id"></td>
+          <td x-text="user.name"></td>
+          <td x-text="user.email"></td>
+          <td x-text="user.address.city"></td>
           <td> <i class="material-icons red-text m-l-2 m-r-2">delete</i>
             <i class="material-icons orange-text m-l-2 m-r-2">edit</i></td>
         </tr>
-        <tr>
-          <td>hajar nikkhah</td>
-          <td>hnikkhah</td>
-          <td>hnikkhah.81@gmail.com</td>
-          <td>imam strret</td>
-          <td> <i class="material-icons red-text m-l-2 m-r-2">delete</i>
-            <i class="material-icons orange-text m-l-2 m-r-2">edit</i></td>
-        </tr>
-        <tr>
-          <td>hajar nikkhah</td>
-          <td>hnikkhah</td>
-          <td>hnikkhah.81@gmail.com</td>
-          <td>imam strret</td>
-          <td> <i class="material-icons red-text m-l-2 m-r-2">delete</i>
-            <i class="material-icons orange-text m-l-2 m-r-2">edit</i></td>
-        </tr>
+      
+      </template> 
       </tbody>
     </table></div>
     <div class="pagination-container container p-l-9 p-r-9 p-t-15  p-b-10 flex-sb-m pos-fixed right-0 left-0 bottom-0 z-depth-4 rounded_top_30">
@@ -150,12 +141,14 @@
   </span>
 of<span class="blue-text darken-2 m-l-5 m-r-5">100</span>
 </div>
-<div class="pagination-buttons">
-<i class="material-icons blue darken2 m-l-2 m-r-2 p-l-2 p-r-1 p-t-1 p-b-1 waves-effect waves-light white-text rounded_pill">keyboard_arrow_left</i>
+<div class="pagination-buttons ">
 <i class="material-icons blue darken2 m-l-2 m-r-2 p-l-2 p-r-1 p-t-1 p-b-1 waves-effect waves-light white-text rounded_pill">keyboard_arrow_right</i>
+<i class="material-icons blue darken2 m-l-2 m-r-2 p-l-2 p-r-1 p-t-1 p-b-1 waves-effect waves-light white-text rounded_pill">keyboard_arrow_left</i>
 </div></div></section>
+
+<!-- -------------------------------------modal---------------------------------------------------- -->
 <div class="add-user-modal-block dis-none"></div>
-<div class="add-user-modal container rounded_top_30 trans-0-1">
+<div class="add-user-modal container rounded_top_30 trans-0-3">
   <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center-on-small-only">
    <h5>
       <i class="material-icons m-r-10 m-l-10 pos-relative top-4">person_add</i>
@@ -181,9 +174,12 @@ Add User</h5>
 
 
 
-
-      
+      <script  src="/js/axios.js" ></script>
+      <script defer src="/js/alpine.js" ></script> 
+      <script src="/materialize/js/alpineJsController/usersController.js"></script> 
+        
 <script src="/materialize/js/materialize.min.js"></script> 
+
 <script src="/js/main.js" ></script> 
 <script src="/js/tuturial.js" ></script> 
 
